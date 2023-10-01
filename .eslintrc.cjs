@@ -12,7 +12,7 @@ module.exports = {
   rules: {
     'no-console': 'error',
     quotes: ['error', 'single'],
-    'jsx-quotes': ['error', 'prefer-single'],
+    'jsx-quotes': ['error', 'prefer-double'],
     '@typescript-eslint/no-unused-vars': ['warn'],
     '@typescript-eslint/no-use-before-define': ['error'],
     '@typescript-eslint/semi': ['error'],
