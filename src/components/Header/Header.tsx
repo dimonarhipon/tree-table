@@ -1,12 +1,12 @@
-import { AppBar, Typography, IconButton, Box } from '@mui/material';
+import { AppBar, Typography, IconButton, Box, Toolbar } from '@mui/material';
 import AppsIcon from '@mui/icons-material/Apps';
 import ReplyIcon from '@mui/icons-material/Reply';
-import { StyledToolbar, StyledTab, StyledTabs } from './styled';
+import { StyledTab, StyledTabs } from './styled';
 
 export default function Header() {
 	return (
 		<AppBar position="static">
-			<StyledToolbar>
+			<Toolbar>
 				<Box display="flex" gap="4px">
 					<IconButton color="inherit" aria-label="На главную">
 						<AppsIcon />
@@ -23,7 +23,7 @@ export default function Header() {
 				<Typography component="h1" variant="h6" color="inherit" noWrap hidden>
 					Table Tree
 				</Typography>
-			</StyledToolbar>
+			</Toolbar>
 		</AppBar>
 	);
 }
