@@ -24,8 +24,9 @@ export default function TableBody() {
 				localStorage.setItem('rows', JSON.stringify(data));
 			}
 			setRows(data);
+			throw new Error(`${data.status} ${data.error}`);
 		} catch (error) {
-			throw new Error('Ошибка');
+			throw new Error(`Ошибка! ${error}`);
 		}
 	};
 

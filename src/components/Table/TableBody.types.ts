@@ -21,3 +21,10 @@ export interface Row {
 	salary: number;
 	supportCosts: number;
 }
+
+export type TError = {
+	error: string;
+	path: string;
+	status: number;
+	timestamp: number;
+};
