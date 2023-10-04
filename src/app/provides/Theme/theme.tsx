@@ -2,6 +2,15 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
 	components: {
+		MuiCircularProgress: {
+			styleOverrides: {
+				root: {
+					color: 'rgba(255, 255, 255, 1)',
+					display: 'block',
+					margin: '0 auto',
+				}
+			}
+		},
 		MuiTable: {
 			styleOverrides: {
 				root: {
@@ -16,11 +25,38 @@ const theme = createTheme({
 				}
 			}
 		},
+		MuiInputBase: {
+			styleOverrides: {
+				root: {
+					padding: '7px 10px',
+					color: 'rgba(113, 113, 122, 1)',
+					borderRadius: 6,
+					border: '1px solid rgba(65, 65, 68, 1)',
+
+					input: {
+						padding: 0,
+						fontFamily: 'Roboto, Arial',
+						fontSize: 14,
+						fontStyle: 'normal',
+						fontWeight: 400,
+						lineHeight: 1.3,
+						letterSpacing: 0.1,
+					},
+				}
+			}
+		},
+		MuiInput: {
+			styleOverrides: {
+				root: {
+					padding: 0,
+				}
+			}
+		},
 		MuiTableCell: {
 			styleOverrides: {
 				root: {
 					flexGrow: 1,
-					padding: '0 12px',
+					padding: '0 12px;',
 					color: 'rgba(255, 255, 255, 1)',
 					borderBottom: 'none'
 				}
@@ -31,8 +67,37 @@ const theme = createTheme({
 				root: {
 					display: 'grid',
 					gridTemplateColumns: 'minmax(80px, 1fr) 7fr minmax(160px, 1fr) 2fr 2fr 2fr',
-					padding: '19px 0px 20px',
+					alignContent: 'center',
+					alignItems: 'center',
+					padding: '11px 0px 12px',
 					borderTop: '1px solid rgba(65, 65, 68, 1)'
+				}
+			}
+		},
+		MuiButtonGroup: {
+			styleOverrides: {
+				root: {
+					borderRadius: 6,
+					transition: '0.5s ease',
+					'&:hover': {
+            backgroundColor: 'rgba(65, 65, 68, 1)',
+						transition: '0.5s ease',
+          },
+
+          '&.Mui-focused': {
+            backgroundColor: 'rgba(65, 65, 68, 1)',
+						transition: '0.5s ease',
+          },
+				},
+			},
+		},
+		MuiIconButton: {
+			styleOverrides: {
+				root: {
+					padding: '4px',
+					'&:hover, &.Mui-focusVisible, &:focus': {
+						backgroundColor: 'rgba(255, 255, 255, 1)',
+					}
 				}
 			}
 		},
@@ -115,7 +180,9 @@ const theme = createTheme({
 		background: {
 			default: 'rgba(32, 33, 36, 1)',
 		},
-		divider: 'rgba(65, 65, 68, 1)',
+		info: {
+			main: 'rgba(65, 65, 68, 1)',
+		}
 	},
 });
 

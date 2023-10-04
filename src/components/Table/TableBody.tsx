@@ -1,7 +1,8 @@
-import { TableBody as MuiTableBody, TableCell, TableRow } from '@mui/material';
+import { TableBody as MuiTableBody, CircularProgress } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
 import { RowParent } from './TableBody.types';
+import CustomRow from './CustomRow';
 
 const StyledTableBody = styled(MuiTableBody)(() => ({
 	padding: 0,
@@ -11,6 +12,7 @@ const eID = 63697;
 const API_URL = `http://185.244.172.108:8081/v1/outlay-rows/entity/${eID}/row`;
 
 export default function TableBody() {
+	const [loading, setLoading] = useState<boolean>(true);
 	const [rows, setRows] = useState<RowParent[] | null>(null);
 
 	const fetchDataGet = async () => {
@@ -18,8 +20,10 @@ export default function TableBody() {
 			const response = await fetch(`${API_URL}/list`);
 			const data = await response.json();
 
+			if (data.length) {
+				localStorage.setItem('rows', JSON.stringify(data));
+			}
 			setRows(data);
-			localStorage.setItem('rows', JSON.stringify(data));
 		} catch (error) {
 			throw new Error('Ошибка');
 		}
@@ -33,20 +37,20 @@ export default function TableBody() {
 		} else {
 			fetchDataGet();
 		}
+		setLoading(false);
 	}, []);
+
+	if (loading) {
+		return <CircularProgress />;
+	}
 
 	return (
 		<StyledTableBody>
-			{rows?.map((row, index) => (
-				<TableRow key={index}>
-					<TableCell>{row.child}</TableCell>
-					<TableCell>{row.rowName}</TableCell>
-					<TableCell>{row.salary}</TableCell>
-					<TableCell>{row.equipmentCosts}</TableCell>
-					<TableCell>{row.overheads}</TableCell>
-					<TableCell>{row.estimatedProfit}</TableCell>
-				</TableRow>
-			))}
+			{rows?.length ? (
+				rows?.map((row, index) => <CustomRow key={index} row={row} isEditing={false} />)
+			) : (
+				<CustomRow isEditing />
+			)}
 		</StyledTableBody>
 	);
 }
