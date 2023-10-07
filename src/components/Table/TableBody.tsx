@@ -48,7 +48,7 @@ export default function TableBody() {
 	return (
 		<StyledTableBody>
 			{rows?.length ? (
-				rows?.map((row, index) => <CustomRow key={index} row={row} isEditing={false} />)
+				rows?.map((row) => <CustomRow key={row.id} row={row} isEditing={false} />)
 			) : (
 				<CustomRow isEditing />
 			)}
