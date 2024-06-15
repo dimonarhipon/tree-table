@@ -17,6 +17,7 @@ export default function CustomRow({ row, isEditing = true }: TCustomRow) {
 			setEditToggle(false);
 		}
 	};
+
 	const editRowHandler = () => {
 		if (!isEdit) setEditToggle(true);
 	};
