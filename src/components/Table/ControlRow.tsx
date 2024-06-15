@@ -5,9 +5,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 type TCellProps = {
 	isEdit: boolean;
+	onAdd: () => void;
+	onRemove: () => void;
 };
 
-export default function ControlRow({ isEdit }: TCellProps) {
+export default function ControlRow({ onAdd, onRemove, isEdit }: TCellProps) {
 	const [isControlRow, setControlRow] = useState<boolean>(false);
 
 	const mouseEnterHandler = () => {
@@ -26,11 +28,11 @@ export default function ControlRow({ isEdit }: TCellProps) {
 			disableRipple={true}
 			disableFocusRipple={true}
 		>
-			<IconButton aria-label="Создать" size="small">
+			<IconButton aria-label="Создать" size="small" onClick={onAdd}>
 				<TextSnippetIcon color="secondary" fontSize="small" />
 			</IconButton>
 			{isControlRow && (
-				<IconButton aria-label="Удалить" size="small">
+				<IconButton aria-label="Удалить" size="small" onClick={onRemove}>
 					<DeleteIcon color="error" fontSize="small" />
 				</IconButton>
 			)}

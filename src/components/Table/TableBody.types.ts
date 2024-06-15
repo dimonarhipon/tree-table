@@ -23,7 +23,7 @@ export interface Row { // createRowEntity
 	total: number;
 }
 
-export type TError = {
+export interface IError {
 	error: string;
 	path: string;
 	status: number;
@@ -36,7 +36,7 @@ export interface EntityResponse {
 	rowName: string;
 }
 
-export interface OutlayRowRequest {
+export interface OutlayRowRequest { // create request
 	parentId: number; // parentId
 	equipmentCosts: number;
 	estimatedProfit: number;
@@ -51,7 +51,7 @@ export interface OutlayRowRequest {
 	// нет total
 }
 
-export interface OutlayRowUpdateRequest {
+export interface OutlayRowUpdateRequest { // update request
 	equipmentCosts: number;
 	estimatedProfit: number;
 	machineOperatorSalary: number;
@@ -80,13 +80,13 @@ export interface RowResponse {
 	total: number;
 }
 
-export interface RecalculatedRows {
+export interface RecalculatedRows { // create response // delete response
 	changed: [RowResponse];
 	current: RowResponse;
 }
 
 export interface TreeResponse {
-	child: [{}];
+	child: TreeResponse[]; // ?
 	id: number;
 	equipmentCosts: number;
 	estimatedProfit: number;
